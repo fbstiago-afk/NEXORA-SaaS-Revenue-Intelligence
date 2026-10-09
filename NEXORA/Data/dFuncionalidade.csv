@@ -1,0 +1,11 @@
+FuncionalidadeID,Funcionalidade,CategoriaFuncionalidade
+1,CRM,Core
+2,Pipeline,Core
+3,Tarefas,Produtividade
+4,Metas,Produtividade
+5,Automação,Automação
+6,Dashboard,Analytics
+7,Relatórios,Analytics
+8,API,Plataforma
+9,Integrações,Plataforma
+10,Gestão de Equipe,Produtividade

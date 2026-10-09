@@ -1,0 +1,113 @@
+/// Grão: ticket de suporte.
+table fSuporte
+	lineageTag: e1cd5291-8519-55b4-8573-286c8c316239
+
+	column TicketID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1174bca3-2149-5e5f-8c9f-a1ba1e5da8d7
+		summarizeBy: none
+		sourceColumn: TicketID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClienteID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 78b371cc-f47b-5b8d-80d8-57dbb345e6ba
+		summarizeBy: none
+		sourceColumn: ClienteID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataAbertura
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		lineageTag: fb7d32ae-450f-59ac-9bc3-f828b5e562b7
+		summarizeBy: none
+		sourceColumn: DataAbertura
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Categoria
+		dataType: string
+		lineageTag: e0362757-cc60-58a1-8e3c-897158f09122
+		summarizeBy: none
+		sourceColumn: Categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Prioridade
+		dataType: string
+		lineageTag: 58c73567-7650-5c7c-a757-da55705f612b
+		summarizeBy: none
+		sourceColumn: Prioridade
+
+		annotation SummarizationSetBy = Automatic
+
+	column SLAHoras
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9da89450-54fa-59d4-857b-3b322c4e93b9
+		summarizeBy: none
+		sourceColumn: SLAHoras
+
+		annotation SummarizationSetBy = Automatic
+
+	column TempoPrimeiraRespostaH
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		lineageTag: ee4df81c-a8a8-5878-ad45-8dc3defc8cd0
+		summarizeBy: none
+		sourceColumn: TempoPrimeiraRespostaH
+
+		annotation SummarizationSetBy = Automatic
+
+	column TempoResolucaoH
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		lineageTag: 316918b7-6125-5ae9-a580-4ec234dce34c
+		summarizeBy: none
+		sourceColumn: TempoResolucaoH
+
+		annotation SummarizationSetBy = Automatic
+
+	column DentroSLA
+		dataType: string
+		lineageTag: 2ab6e5b2-54ba-52bf-8f69-3a1335ea6bd3
+		summarizeBy: none
+		sourceColumn: DentroSLA
+
+		annotation SummarizationSetBy = Automatic
+
+	column Satisfacao
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1e3f4373-7340-5370-bd00-58a21e1f9890
+		summarizeBy: none
+		sourceColumn: Satisfacao
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fSuporte = m
+		mode: import
+		source =
+				let
+					Fonte = Csv.Document(File.Contents(PastaDados & "fSuporte.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars = true]),
+					Colunas = Table.SelectColumns(Cabecalho, {"TicketID", "ClienteID", "DataAbertura", "Categoria", "Prioridade", "SLAHoras", "TempoPrimeiraRespostaH", "TempoResolucaoH", "DentroSLA", "Satisfacao"}),
+					Tipos = Table.TransformColumnTypes(Colunas, {{"TicketID", Int64.Type}, {"ClienteID", Int64.Type}, {"DataAbertura", type date}, {"Categoria", type text}, {"Prioridade", type text}, {"SLAHoras", Int64.Type}, {"TempoPrimeiraRespostaH", type number}, {"TempoResolucaoH", type number}, {"DentroSLA", type text}, {"Satisfacao", Int64.Type}}, "en-US")
+				in
+					Tipos
+
+	annotation PBI_ResultType = Table
+

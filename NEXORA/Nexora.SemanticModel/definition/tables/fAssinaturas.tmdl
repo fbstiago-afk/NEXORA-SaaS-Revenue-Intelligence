@@ -1,0 +1,144 @@
+/// Contratos (booking). Uma linha por período contratual de plano/ciclo.
+table fAssinaturas
+	lineageTag: e8208bbb-597c-55e0-abb0-1226023cce4a
+
+	column AssinaturaID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d396a260-3e80-5fab-a3b2-97fac394cdf9
+		summarizeBy: none
+		sourceColumn: AssinaturaID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClienteID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7886b4ae-1bc5-5196-8880-3299025217cf
+		summarizeBy: none
+		sourceColumn: ClienteID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PlanoID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2b4beaa5-a520-5bdb-9c47-8bc7a7a15b70
+		summarizeBy: none
+		sourceColumn: PlanoID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoCobranca
+		dataType: string
+		isHidden
+		lineageTag: 77c7e604-e34d-593a-9d54-cd183d572bf1
+		summarizeBy: none
+		sourceColumn: TipoCobranca
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataInicio
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		lineageTag: ea8cf2b6-eeae-540c-bf74-92b581f974e8
+		summarizeBy: none
+		sourceColumn: DataInicio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DataFim
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		lineageTag: 30d1ed08-4f85-51d6-af90-23dc1b70931c
+		summarizeBy: none
+		sourceColumn: DataFim
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column StatusAssinatura
+		dataType: string
+		lineageTag: 8abb25a1-2f2b-5b43-82f6-c96785310e82
+		summarizeBy: none
+		sourceColumn: StatusAssinatura
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoAbertura
+		dataType: string
+		lineageTag: 5442f541-0bb3-5974-ba5a-6f056ca25fef
+		summarizeBy: none
+		sourceColumn: TipoAbertura
+
+		annotation SummarizationSetBy = Automatic
+
+	column MRRInicial
+		dataType: double
+		isHidden
+		formatString: R$ #,0.00
+		lineageTag: 8eeed3f0-3492-5f48-8890-6c82cd13f6cd
+		summarizeBy: none
+		sourceColumn: MRRInicial
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrazoMeses
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5a3e59c7-a9bb-5fa6-a1a3-e3fb6a08b912
+		summarizeBy: none
+		sourceColumn: PrazoMeses
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValorContrato
+		dataType: double
+		isHidden
+		formatString: R$ #,0.00
+		lineageTag: 5278ffe2-f920-5247-9581-17a4d92c5d80
+		summarizeBy: none
+		sourceColumn: ValorContrato
+
+		annotation SummarizationSetBy = Automatic
+
+	column UsuariosContratados
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 489b9254-7fd4-581f-8a1c-8c180c9f2371
+		summarizeBy: none
+		sourceColumn: UsuariosContratados
+
+		annotation SummarizationSetBy = Automatic
+
+	column MotivoEncerramento
+		dataType: string
+		lineageTag: 8a176c81-a962-5db0-9aa4-545d13f5d9dc
+		summarizeBy: none
+		sourceColumn: MotivoEncerramento
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fAssinaturas = m
+		mode: import
+		source =
+				let
+					Fonte = Csv.Document(File.Contents(PastaDados & "fAssinaturas.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars = true]),
+					Colunas = Table.SelectColumns(Cabecalho, {"AssinaturaID", "ClienteID", "PlanoID", "TipoCobranca", "DataInicio", "DataFim", "StatusAssinatura", "TipoAbertura", "MRRInicial", "PrazoMeses", "ValorContrato", "UsuariosContratados", "MotivoEncerramento"}),
+					Tipos = Table.TransformColumnTypes(Colunas, {{"AssinaturaID", Int64.Type}, {"ClienteID", Int64.Type}, {"PlanoID", Int64.Type}, {"TipoCobranca", type text}, {"DataInicio", type date}, {"DataFim", type date}, {"StatusAssinatura", type text}, {"TipoAbertura", type text}, {"MRRInicial", type number}, {"PrazoMeses", Int64.Type}, {"ValorContrato", type number}, {"UsuariosContratados", Int64.Type}, {"MotivoEncerramento", type text}}, "en-US")
+				in
+					Tipos
+
+	annotation PBI_ResultType = Table
+

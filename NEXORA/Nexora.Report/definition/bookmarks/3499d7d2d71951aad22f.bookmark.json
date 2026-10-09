@@ -1,0 +1,151 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/1.4.0/schema.json",
+  "displayName": "Filtros fechados · Customer & Retention",
+  "name": "3499d7d2d71951aad22f",
+  "options": {
+    "targetVisualNames": [
+      "2f08e6b6edadb7362622",
+      "11a28a0f9651146eb95a",
+      "40458a3972852109f94f",
+      "3cdcc5dd549d011c4b26",
+      "85c83466fa176b85d197",
+      "b324dac228cd80c46fed",
+      "5219e2b2a5dc71d1adf0",
+      "df41e8e2f58eff292806",
+      "22dc16d657f7a2c2f278",
+      "c8ff03e8ce2eddef0048",
+      "685efea803e201fdaf79",
+      "8957f64cb7ab5d98475e",
+      "88db7ca76a6656192b70"
+    ],
+    "suppressData": true,
+    "applyOnlyToTargetVisuals": true
+  },
+  "explorationState": {
+    "version": "1.0",
+    "activeSection": "customer",
+    "sections": {
+      "customer": {
+        "visualContainers": {
+          "2f08e6b6edadb7362622": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "11a28a0f9651146eb95a": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "40458a3972852109f94f": {
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "3cdcc5dd549d011c4b26": {
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "85c83466fa176b85d197": {
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "b324dac228cd80c46fed": {
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "5219e2b2a5dc71d1adf0": {
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "df41e8e2f58eff292806": {
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "22dc16d657f7a2c2f278": {
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "c8ff03e8ce2eddef0048": {
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "685efea803e201fdaf79": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "8957f64cb7ab5d98475e": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "88db7ca76a6656192b70": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

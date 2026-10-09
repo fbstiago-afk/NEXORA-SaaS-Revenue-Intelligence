@@ -1,0 +1,128 @@
+/// Agregado: cohort × idade × canal × plano de entrada × segmento × porte.
+table fCohortMensal
+	lineageTag: d073491d-920f-5c08-896c-36b1a4081015
+
+	column CohortRowID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ece7760f-040a-5753-8976-0afa14942843
+		summarizeBy: none
+		sourceColumn: CohortRowID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CohortMes
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		lineageTag: e4b8d626-1856-5ce5-8e5e-82f1d7dc1039
+		summarizeBy: none
+		sourceColumn: CohortMes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column IdadeCohort
+		dataType: int64
+		formatString: 0
+		lineageTag: 67d3ba34-f87a-5afe-9ae2-4cdb9b6077be
+		summarizeBy: none
+		sourceColumn: IdadeCohort
+
+		annotation SummarizationSetBy = Automatic
+
+	column CanalID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: cd9478ae-201b-54b2-af35-e130578f89fd
+		summarizeBy: none
+		sourceColumn: CanalID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PlanoEntradaID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 792e219c-fe99-5590-997a-ee09dbc6a24f
+		summarizeBy: none
+		sourceColumn: PlanoEntradaID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SegmentoID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a9105fbd-7c79-5f17-8777-b1f6e365ef0f
+		summarizeBy: none
+		sourceColumn: SegmentoID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PorteID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b104ce2d-60c2-5c68-ad4c-8b33bb0e28fe
+		summarizeBy: none
+		sourceColumn: PorteID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClientesIniciais
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3fcb298c-8e0b-5ddd-9104-6fb63d1eba75
+		summarizeBy: none
+		sourceColumn: ClientesIniciais
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClientesAtivos
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 21f60a85-145d-5b8e-8cb2-1f18c7d40e98
+		summarizeBy: none
+		sourceColumn: ClientesAtivos
+
+		annotation SummarizationSetBy = Automatic
+
+	column MRRInicial
+		dataType: double
+		isHidden
+		formatString: R$ #,0.00
+		lineageTag: 29d1ce57-4251-589c-888f-d40f2db69ed3
+		summarizeBy: none
+		sourceColumn: MRRInicial
+
+		annotation SummarizationSetBy = Automatic
+
+	column MRRAtivo
+		dataType: double
+		isHidden
+		formatString: R$ #,0.00
+		lineageTag: 58e3ebb1-d3f1-5fe2-991d-76028f83354a
+		summarizeBy: none
+		sourceColumn: MRRAtivo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fCohortMensal = m
+		mode: import
+		source =
+				let
+					Fonte = Csv.Document(File.Contents(PastaDados & "fCohortMensal.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars = true]),
+					Colunas = Table.SelectColumns(Cabecalho, {"CohortRowID", "CohortMes", "IdadeCohort", "CanalID", "PlanoEntradaID", "SegmentoID", "PorteID", "ClientesIniciais", "ClientesAtivos", "MRRInicial", "MRRAtivo"}),
+					Tipos = Table.TransformColumnTypes(Colunas, {{"CohortRowID", Int64.Type}, {"CohortMes", type date}, {"IdadeCohort", Int64.Type}, {"CanalID", Int64.Type}, {"PlanoEntradaID", Int64.Type}, {"SegmentoID", Int64.Type}, {"PorteID", Int64.Type}, {"ClientesIniciais", Int64.Type}, {"ClientesAtivos", Int64.Type}, {"MRRInicial", type number}, {"MRRAtivo", type number}}, "en-US")
+				in
+					Tipos
+
+	annotation PBI_ResultType = Table
+

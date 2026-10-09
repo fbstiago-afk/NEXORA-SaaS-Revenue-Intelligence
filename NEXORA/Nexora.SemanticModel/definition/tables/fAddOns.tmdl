@@ -1,0 +1,99 @@
+/// Contratação de add-ons recorrentes.
+table fAddOns
+	lineageTag: 57b6291b-47a3-5b1e-bfc7-f481e4a05814
+
+	column AddOnContratoID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4bc87e65-09d9-533e-a634-82ea7a72180a
+		summarizeBy: none
+		sourceColumn: AddOnContratoID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClienteID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6c8044d7-7899-5da5-9356-c12f8e27e2a1
+		summarizeBy: none
+		sourceColumn: ClienteID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AddOnID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: beb063fc-ab4e-54a5-ab40-2a5ec144b062
+		summarizeBy: none
+		sourceColumn: AddOnID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataInicio
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		lineageTag: 5ff50256-227d-5148-9f39-20c7d554b70c
+		summarizeBy: none
+		sourceColumn: DataInicio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DataFim
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		lineageTag: e5a7f014-06b8-5ca5-8eca-a852d81498e3
+		summarizeBy: none
+		sourceColumn: DataFim
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column StatusAddOn
+		dataType: string
+		lineageTag: d8a1910c-bfaa-5756-94ba-4c50070c5880
+		summarizeBy: none
+		sourceColumn: StatusAddOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantidade
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: deabbe2c-add7-5a4f-83a5-900f1d76255c
+		summarizeBy: none
+		sourceColumn: Quantidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrecoMensalLista
+		dataType: double
+		isHidden
+		formatString: R$ #,0.00
+		lineageTag: 72a4051d-4d99-52a7-a8c9-e35d571526f6
+		summarizeBy: none
+		sourceColumn: PrecoMensalLista
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fAddOns = m
+		mode: import
+		source =
+				let
+					Fonte = Csv.Document(File.Contents(PastaDados & "fAddOns.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars = true]),
+					Colunas = Table.SelectColumns(Cabecalho, {"AddOnContratoID", "ClienteID", "AddOnID", "DataInicio", "DataFim", "StatusAddOn", "Quantidade", "PrecoMensalLista"}),
+					Tipos = Table.TransformColumnTypes(Colunas, {{"AddOnContratoID", Int64.Type}, {"ClienteID", Int64.Type}, {"AddOnID", Int64.Type}, {"DataInicio", type date}, {"DataFim", type date}, {"StatusAddOn", type text}, {"Quantidade", Int64.Type}, {"PrecoMensalLista", type number}}, "en-US")
+				in
+					Tipos
+
+	annotation PBI_ResultType = Table
+

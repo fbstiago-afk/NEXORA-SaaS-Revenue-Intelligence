@@ -1,0 +1,54 @@
+/// Porte das empresas.
+table dPorte
+	lineageTag: 03f7392a-f45c-50a4-b91a-89c16a3d8931
+
+	column PorteID
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: 67b276af-5e12-5aa5-bfa4-b195c7a5066b
+		summarizeBy: none
+		sourceColumn: PorteID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Porte
+		dataType: string
+		lineageTag: 6c36b5a5-842d-54d0-a642-5db98dcf8c3e
+		summarizeBy: none
+		sourceColumn: Porte
+		sortByColumn: OrdemPorte
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrdemPorte
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: da7fd99d-9c76-5f5a-b7df-ba4d63362c0e
+		summarizeBy: none
+		sourceColumn: OrdemPorte
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaixaFuncionarios
+		dataType: string
+		lineageTag: 80f688d4-acab-5beb-a02a-d376922b0763
+		summarizeBy: none
+		sourceColumn: FaixaFuncionarios
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dPorte = m
+		mode: import
+		source =
+				let
+					Fonte = Csv.Document(File.Contents(PastaDados & "dPorte.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars = true]),
+					Colunas = Table.SelectColumns(Cabecalho, {"PorteID", "Porte", "OrdemPorte", "FaixaFuncionarios"}),
+					Tipos = Table.TransformColumnTypes(Colunas, {{"PorteID", Int64.Type}, {"Porte", type text}, {"OrdemPorte", Int64.Type}, {"FaixaFuncionarios", type text}}, "en-US")
+				in
+					Tipos
+
+	annotation PBI_ResultType = Table
+

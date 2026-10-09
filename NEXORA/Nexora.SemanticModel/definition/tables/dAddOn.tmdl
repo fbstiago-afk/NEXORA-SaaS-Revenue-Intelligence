@@ -1,0 +1,52 @@
+/// Catálogo de add-ons.
+table dAddOn
+	lineageTag: 8b5019cf-60a1-5afc-891f-3accb783e340
+
+	column AddOnID
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: f1b16ddc-1f5b-555e-80e8-9a0341f1bf7b
+		summarizeBy: none
+		sourceColumn: AddOnID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AddOn
+		dataType: string
+		lineageTag: fa3f3d8c-a89f-5631-aea9-f71fc0855a6b
+		summarizeBy: none
+		sourceColumn: AddOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoCobrancaAddOn
+		dataType: string
+		lineageTag: 473c50f6-b026-5ec7-9050-b717fa83b5d3
+		summarizeBy: none
+		sourceColumn: TipoCobrancaAddOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrecoMensal
+		dataType: double
+		formatString: R$ #,0.00
+		lineageTag: 87d48e6f-09bb-5c00-8b92-383fba5e2789
+		summarizeBy: none
+		sourceColumn: PrecoMensal
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dAddOn = m
+		mode: import
+		source =
+				let
+					Fonte = Csv.Document(File.Contents(PastaDados & "dAddOn.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars = true]),
+					Colunas = Table.SelectColumns(Cabecalho, {"AddOnID", "AddOn", "TipoCobrancaAddOn", "PrecoMensal"}),
+					Tipos = Table.TransformColumnTypes(Colunas, {{"AddOnID", Int64.Type}, {"AddOn", type text}, {"TipoCobrancaAddOn", type text}, {"PrecoMensal", type number}}, "en-US")
+				in
+					Tipos
+
+	annotation PBI_ResultType = Table
+

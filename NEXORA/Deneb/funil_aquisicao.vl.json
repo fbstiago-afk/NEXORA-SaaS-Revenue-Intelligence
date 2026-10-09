@@ -1,0 +1,176 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "name": "dataset"
+  },
+  "width": "container",
+  "height": "container",
+  "transform": [
+    {
+      "filter": "datum.valor > 0"
+    },
+    {
+      "calculate": "log(datum.valor)",
+      "as": "lv"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "lv",
+          "as": "lmax"
+        },
+        {
+          "op": "min",
+          "field": "lv",
+          "as": "lmin"
+        }
+      ]
+    },
+    {
+      "calculate": "0.30 + 0.70 * (datum.lv - datum.lmin) / (datum.lmax - datum.lmin)",
+      "as": "w"
+    },
+    {
+      "calculate": "0.5 - datum.w / 2",
+      "as": "x0"
+    },
+    {
+      "calculate": "0.5 + datum.w / 2",
+      "as": "x1"
+    },
+    {
+      "calculate": "0.5",
+      "as": "xc"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "etapa",
+      "type": "nominal",
+      "sort": {
+        "field": "ordem",
+        "op": "min"
+      },
+      "axis": null,
+      "scale": {
+        "paddingInner": 0.42,
+        "paddingOuter": 0.15
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadius": 10
+      },
+      "encoding": {
+        "x": {
+          "field": "x0",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              1
+            ]
+          },
+          "axis": null
+        },
+        "x2": {
+          "field": "x1"
+        },
+        "color": {
+          "field": "ordem",
+          "type": "quantitative",
+          "legend": null,
+          "scale": {
+            "domain": [
+              1,
+              6
+            ],
+            "range": [
+              "#00B8F5",
+              "#6736F5"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "etapa",
+            "title": "Etapa"
+          },
+          {
+            "field": "rotulo",
+            "title": "Volume"
+          },
+          {
+            "field": "conv",
+            "title": "Conversão"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": 600,
+        "color": "#DCE6F7",
+        "dy": -10
+      },
+      "encoding": {
+        "x": {
+          "field": "xc",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "etapa"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 17,
+        "fontWeight": 700,
+        "color": "#FFFFFF",
+        "dy": 10
+      },
+      "encoding": {
+        "x": {
+          "field": "xc",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "rotulo"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "isValid(datum.conv) && datum.conv != ''"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#00D7C0",
+        "dy": {
+          "expr": "-bandwidth('y') * 0.86"
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "xc",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "conv"
+        }
+      }
+    }
+  ]
+}

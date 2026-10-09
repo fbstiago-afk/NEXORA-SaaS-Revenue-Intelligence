@@ -1,0 +1,11 @@
+CanalID,Canal,TipoCanal,MidiaPaga
+1,Google Ads,Mídia Paga,Sim
+2,Meta Ads,Mídia Paga,Sim
+3,LinkedIn Ads,Mídia Paga,Sim
+4,Conteúdo Orgânico,Inbound,Não
+5,Indicação,Relacionamento,Não
+6,Parceiros,Relacionamento,Não
+7,Outbound,Vendas Ativas,Não
+8,Eventos,Vendas Ativas,Não
+9,Webinar,Inbound,Não
+10,Marketplace,Inbound,Não

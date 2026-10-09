@@ -1,0 +1,270 @@
+/// Empresas clientes (uma linha por ClienteID) com atributos de aquisição, adoção e status atual.
+table dCliente
+	lineageTag: ff27c1b7-e749-5c8f-a058-037e71ca9f6e
+
+	column ClienteID
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: d1fb6bab-53d3-50ba-b57a-1ae995e58b0c
+		summarizeBy: none
+		sourceColumn: ClienteID
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeEmpresa
+		dataType: string
+		lineageTag: 1138bb84-23c6-5b05-a400-0bb488d8ff68
+		summarizeBy: none
+		sourceColumn: NomeEmpresa
+
+		annotation SummarizationSetBy = Automatic
+
+	column SegmentoID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9e65789f-8184-588b-a89e-bbd901322c35
+		summarizeBy: none
+		sourceColumn: SegmentoID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PorteID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 15c10dd2-8b10-5130-a3fb-5e136dad7275
+		summarizeBy: none
+		sourceColumn: PorteID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CanalID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6770eb2d-0b89-52e5-84da-2734625c7d33
+		summarizeBy: none
+		sourceColumn: CanalID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cidade
+		dataType: string
+		lineageTag: 34f83706-eaaf-5cce-b584-209122319353
+		summarizeBy: none
+		sourceColumn: Cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column UF
+		dataType: string
+		lineageTag: 381fdaef-2012-57c3-add7-45f68468f41c
+		summarizeBy: none
+		sourceColumn: UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column Regiao
+		dataType: string
+		lineageTag: 351a54af-b82d-5f2d-bd12-a7c08d6922ab
+		summarizeBy: none
+		sourceColumn: Regiao
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataAquisicao
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		lineageTag: 1d584b5b-33a4-5b0f-9e3e-ec8401c8cd93
+		summarizeBy: none
+		sourceColumn: DataAquisicao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CohortMes
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		lineageTag: 782d85eb-ec53-579a-b096-fc3bcc373aff
+		summarizeBy: none
+		sourceColumn: CohortMes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CohortAno
+		dataType: int64
+		formatString: 0
+		lineageTag: bba9b00f-2f63-5072-a091-6fdf2be25bab
+		summarizeBy: none
+		sourceColumn: CohortAno
+
+		annotation SummarizationSetBy = Automatic
+
+	column PlanoEntradaID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2832d875-cfd6-5702-9814-462777f03e71
+		summarizeBy: none
+		sourceColumn: PlanoEntradaID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PlanoAtualID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: df2122bc-d71d-58b4-a227-ec8de21e156a
+		summarizeBy: none
+		sourceColumn: PlanoAtualID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoCobranca
+		dataType: string
+		lineageTag: 77e47e9e-1fde-5f7b-a8db-fcef4d77b027
+		summarizeBy: none
+		sourceColumn: TipoCobranca
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusAtual
+		dataType: string
+		lineageTag: 2084da9f-e508-50ae-a596-275a92c64c7f
+		summarizeBy: none
+		sourceColumn: StatusAtual
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataUltimoCancelamento
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		lineageTag: b9c60b94-f699-54fb-8bc9-d68c21feab74
+		summarizeBy: none
+		sourceColumn: DataUltimoCancelamento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column MotivoUltimoCancelamento
+		dataType: string
+		lineageTag: 7cbbe5d4-d71b-500d-9f95-8cd90515ff94
+		summarizeBy: none
+		sourceColumn: MotivoUltimoCancelamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column FoiReativado
+		dataType: string
+		lineageTag: 7ba8d456-5ab2-578a-a94f-2bd76f0a22cb
+		summarizeBy: none
+		sourceColumn: FoiReativado
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdeCancelamentos
+		dataType: int64
+		formatString: 0
+		lineageTag: 68f1d46a-c372-570c-bdd4-0661d0da7bcd
+		summarizeBy: none
+		sourceColumn: QtdeCancelamentos
+
+		annotation SummarizationSetBy = Automatic
+
+	column PossuiIntegracao
+		dataType: string
+		lineageTag: 48e0f146-54bc-58e5-b148-2a32fbcd8aa8
+		summarizeBy: none
+		sourceColumn: PossuiIntegracao
+
+		annotation SummarizationSetBy = Automatic
+
+	column ScoreUsoPrimeiros30Dias
+		dataType: double
+		formatString: #,0.00
+		lineageTag: e1cd166c-be8c-5e82-a14b-5a4ca14cf94e
+		summarizeBy: none
+		sourceColumn: ScoreUsoPrimeiros30Dias
+
+		annotation SummarizationSetBy = Automatic
+
+	column AdocaoInicial
+		dataType: string
+		lineageTag: 3d86b3ef-2de3-52ce-901d-d5b8edfbcb67
+		summarizeBy: none
+		sourceColumn: AdocaoInicial
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescontoComercialPct
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 3f666466-f527-5585-b8c2-e609f6fce361
+		summarizeBy: none
+		sourceColumn: DescontoComercialPct
+
+		annotation SummarizationSetBy = Automatic
+
+	column UsuariosAtuais
+		dataType: int64
+		formatString: 0
+		lineageTag: efb46ba6-5ca6-57c0-af91-d2359f54eebb
+		summarizeBy: none
+		sourceColumn: UsuariosAtuais
+
+		annotation SummarizationSetBy = Automatic
+
+	column MRRAtual
+		dataType: double
+		formatString: R$ #,0.00
+		lineageTag: a87ae108-882e-5f4c-b498-b2d0c489a6c8
+		summarizeBy: none
+		sourceColumn: MRRAtual
+
+		annotation SummarizationSetBy = Automatic
+
+	column HealthScoreAtual
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 05a36b1a-63c2-5f60-bbb7-7f8d29744b6a
+		summarizeBy: none
+		sourceColumn: HealthScoreAtual
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaixaHealthAtual
+		dataType: string
+		lineageTag: b6ec43c9-33d2-5423-a6b9-16aa2ba96fc7
+		summarizeBy: none
+		sourceColumn: FaixaHealthAtual
+
+		annotation SummarizationSetBy = Automatic
+
+	column PotencialUpgrade
+		dataType: string
+		lineageTag: 608b6e2e-29d9-5cbf-8ad6-e5ef36497a7e
+		summarizeBy: none
+		sourceColumn: PotencialUpgrade
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dCliente = m
+		mode: import
+		source =
+				let
+					Fonte = Csv.Document(File.Contents(PastaDados & "dCliente.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars = true]),
+					Colunas = Table.SelectColumns(Cabecalho, {"ClienteID", "NomeEmpresa", "SegmentoID", "PorteID", "CanalID", "Cidade", "UF", "Regiao", "DataAquisicao", "CohortMes", "CohortAno", "PlanoEntradaID", "PlanoAtualID", "TipoCobranca", "StatusAtual", "DataUltimoCancelamento", "MotivoUltimoCancelamento", "FoiReativado", "QtdeCancelamentos", "PossuiIntegracao", "ScoreUsoPrimeiros30Dias", "AdocaoInicial", "DescontoComercialPct", "UsuariosAtuais", "MRRAtual", "HealthScoreAtual", "FaixaHealthAtual", "PotencialUpgrade"}),
+					Tipos = Table.TransformColumnTypes(Colunas, {{"ClienteID", Int64.Type}, {"NomeEmpresa", type text}, {"SegmentoID", Int64.Type}, {"PorteID", Int64.Type}, {"CanalID", Int64.Type}, {"Cidade", type text}, {"UF", type text}, {"Regiao", type text}, {"DataAquisicao", type date}, {"CohortMes", type date}, {"CohortAno", Int64.Type}, {"PlanoEntradaID", Int64.Type}, {"PlanoAtualID", Int64.Type}, {"TipoCobranca", type text}, {"StatusAtual", type text}, {"DataUltimoCancelamento", type date}, {"MotivoUltimoCancelamento", type text}, {"FoiReativado", type text}, {"QtdeCancelamentos", Int64.Type}, {"PossuiIntegracao", type text}, {"ScoreUsoPrimeiros30Dias", type number}, {"AdocaoInicial", type text}, {"DescontoComercialPct", type number}, {"UsuariosAtuais", Int64.Type}, {"MRRAtual", type number}, {"HealthScoreAtual", type number}, {"FaixaHealthAtual", type text}, {"PotencialUpgrade", type text}}, "en-US")
+				in
+					Tipos
+
+	annotation PBI_ResultType = Table
+

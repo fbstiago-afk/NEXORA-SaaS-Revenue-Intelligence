@@ -1,0 +1,112 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/1.4.0/schema.json",
+  "displayName": "Filtros abertos · Growth & Unit Economics",
+  "name": "d0696663838310942a17",
+  "options": {
+    "targetVisualNames": [
+      "9c589b811bb3b8ea0eb1",
+      "a5df0974393a43f3f409",
+      "6f58594e39730e295a5b",
+      "3687db204d516b26f92f",
+      "1fae8223a5062102ec07",
+      "4f1b00952572e98c7034",
+      "c782aa55134719678d9f",
+      "2a495c691585e07fe99f",
+      "d8756ffa42db6dfa369a",
+      "b093f0ea3b169085eb59",
+      "86ea368fadaaa5480520",
+      "d3d30ea289797102adb1",
+      "3a6a38d5e1434ac3ae28"
+    ],
+    "suppressData": true,
+    "applyOnlyToTargetVisuals": true
+  },
+  "explorationState": {
+    "version": "1.0",
+    "activeSection": "growth",
+    "sections": {
+      "growth": {
+        "visualContainers": {
+          "9c589b811bb3b8ea0eb1": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "a5df0974393a43f3f409": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "6f58594e39730e295a5b": {
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {}
+            }
+          },
+          "3687db204d516b26f92f": {
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {}
+            }
+          },
+          "1fae8223a5062102ec07": {
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {}
+            }
+          },
+          "4f1b00952572e98c7034": {
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {}
+            }
+          },
+          "c782aa55134719678d9f": {
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {}
+            }
+          },
+          "2a495c691585e07fe99f": {
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {}
+            }
+          },
+          "d8756ffa42db6dfa369a": {
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {}
+            }
+          },
+          "b093f0ea3b169085eb59": {
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {}
+            }
+          },
+          "86ea368fadaaa5480520": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "d3d30ea289797102adb1": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "3a6a38d5e1434ac3ae28": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

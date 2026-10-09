@@ -1,0 +1,236 @@
+/// Grão: cliente × mês ativo. Uso, adoção e Health Score.
+table fUsoProduto
+	lineageTag: 77945862-447c-528a-b050-48e4779aa513
+
+	column UsoID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9e69d699-9a1c-51d1-9464-ae6e56f87030
+		summarizeBy: none
+		sourceColumn: UsoID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClienteID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d8ced61f-3566-57e6-bef4-8dd6718f809d
+		summarizeBy: none
+		sourceColumn: ClienteID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataMes
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		lineageTag: 54977ca0-8908-5038-ab45-b6a046a2e3d3
+		summarizeBy: none
+		sourceColumn: DataMes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column UsuariosLicenciados
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 29327826-4006-57b8-a43c-1db07d1cb28f
+		summarizeBy: none
+		sourceColumn: UsuariosLicenciados
+
+		annotation SummarizationSetBy = Automatic
+
+	column UsuariosAtivos
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 04e7ef03-65e7-5b3d-a97c-a45306ecf565
+		summarizeBy: none
+		sourceColumn: UsuariosAtivos
+
+		annotation SummarizationSetBy = Automatic
+
+	column DAU
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		lineageTag: e513957e-7cec-567b-8267-c4e068b04948
+		summarizeBy: none
+		sourceColumn: DAU
+
+		annotation SummarizationSetBy = Automatic
+
+	column WAU
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		lineageTag: 1d6151ad-e733-57a1-b62d-738ca469d689
+		summarizeBy: none
+		sourceColumn: WAU
+
+		annotation SummarizationSetBy = Automatic
+
+	column MAU
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 303840de-f462-534f-bb54-befe8357e509
+		summarizeBy: none
+		sourceColumn: MAU
+
+		annotation SummarizationSetBy = Automatic
+
+	column Logins
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 80079408-4873-5a15-b844-14ec11100d28
+		summarizeBy: none
+		sourceColumn: Logins
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sessoes
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f3df0275-6fc5-551d-8e20-d5c24261d8a2
+		summarizeBy: none
+		sourceColumn: Sessoes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Automacoes
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b25e077a-8ad9-5085-8cbf-5f7f0abd0fab
+		summarizeBy: none
+		sourceColumn: Automacoes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Oportunidades
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e77d680e-e96f-5724-9091-f0aab01067e5
+		summarizeBy: none
+		sourceColumn: Oportunidades
+
+		annotation SummarizationSetBy = Automatic
+
+	column Relatorios
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: bf9edb37-42c4-5da9-ba1d-81fc2cf0ef59
+		summarizeBy: none
+		sourceColumn: Relatorios
+
+		annotation SummarizationSetBy = Automatic
+
+	column IntegracoesAtivas
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2222b13f-aa51-5e84-9b40-e9e252c0778f
+		summarizeBy: none
+		sourceColumn: IntegracoesAtivas
+
+		annotation SummarizationSetBy = Automatic
+
+	column FuncionalidadesUsadas
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f6904120-682b-53f6-8af6-cf414d4983a5
+		summarizeBy: none
+		sourceColumn: FuncionalidadesUsadas
+
+		annotation SummarizationSetBy = Automatic
+
+	column TicketsMes
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f9aa0990-cef2-56b5-a088-8d668acabf80
+		summarizeBy: none
+		sourceColumn: TicketsMes
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaturasEmAtraso
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fa2afed0-6bf2-54f0-b247-5ce3e4a2c97e
+		summarizeBy: none
+		sourceColumn: FaturasEmAtraso
+
+		annotation SummarizationSetBy = Automatic
+
+	column VariacaoUsoPct
+		dataType: double
+		isHidden
+		formatString: 0.0%
+		lineageTag: 4a9f34ec-8965-52ab-8ff3-2a155e74d02d
+		summarizeBy: none
+		sourceColumn: VariacaoUsoPct
+
+		annotation SummarizationSetBy = Automatic
+
+	column HealthScore
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		lineageTag: bc000118-7b47-570b-a4bf-475506bae4c9
+		summarizeBy: none
+		sourceColumn: HealthScore
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaixaHealth
+		dataType: string
+		isHidden
+		lineageTag: 5248737f-6a63-5c9a-afec-07691345baeb
+		summarizeBy: none
+		sourceColumn: FaixaHealth
+
+		annotation SummarizationSetBy = Automatic
+
+	column PotencialUpgrade
+		dataType: string
+		lineageTag: d30941b6-6054-5048-a7ad-4b945645f33e
+		summarizeBy: none
+		sourceColumn: PotencialUpgrade
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesesDeVida
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2094f2f1-5b2e-5e79-acb5-130d3cc46e32
+		summarizeBy: none
+		sourceColumn: MesesDeVida
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fUsoProduto = m
+		mode: import
+		source =
+				let
+					Fonte = Csv.Document(File.Contents(PastaDados & "fUsoProduto.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars = true]),
+					Colunas = Table.SelectColumns(Cabecalho, {"UsoID", "ClienteID", "DataMes", "UsuariosLicenciados", "UsuariosAtivos", "DAU", "WAU", "MAU", "Logins", "Sessoes", "Automacoes", "Oportunidades", "Relatorios", "IntegracoesAtivas", "FuncionalidadesUsadas", "TicketsMes", "FaturasEmAtraso", "VariacaoUsoPct", "HealthScore", "FaixaHealth", "PotencialUpgrade", "MesesDeVida"}),
+					Tipos = Table.TransformColumnTypes(Colunas, {{"UsoID", Int64.Type}, {"ClienteID", Int64.Type}, {"DataMes", type date}, {"UsuariosLicenciados", Int64.Type}, {"UsuariosAtivos", Int64.Type}, {"DAU", type number}, {"WAU", type number}, {"MAU", Int64.Type}, {"Logins", Int64.Type}, {"Sessoes", Int64.Type}, {"Automacoes", Int64.Type}, {"Oportunidades", Int64.Type}, {"Relatorios", Int64.Type}, {"IntegracoesAtivas", Int64.Type}, {"FuncionalidadesUsadas", Int64.Type}, {"TicketsMes", Int64.Type}, {"FaturasEmAtraso", Int64.Type}, {"VariacaoUsoPct", type number}, {"HealthScore", type number}, {"FaixaHealth", type text}, {"PotencialUpgrade", type text}, {"MesesDeVida", Int64.Type}}, "en-US")
+				in
+					Tipos
+
+	annotation PBI_ResultType = Table
+

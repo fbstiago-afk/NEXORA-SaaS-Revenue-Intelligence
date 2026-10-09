@@ -1,0 +1,167 @@
+/// Grão: fatura (billing). Não confundir com MRR.
+table fFinanceiro
+	lineageTag: dc91e5af-099d-525f-888a-b48b239feb4c
+
+	column FaturaID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5d3099df-f84d-5cc8-b852-f5b08a4e58c8
+		summarizeBy: none
+		sourceColumn: FaturaID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClienteID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4244e10a-e0ed-5d1a-9374-576e0552ec18
+		summarizeBy: none
+		sourceColumn: ClienteID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataEmissao
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		lineageTag: a3b8e234-6bc5-543f-a7fe-d28a2faefbc5
+		summarizeBy: none
+		sourceColumn: DataEmissao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DataVencimento
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		lineageTag: f25f7f98-88c8-5e65-b42c-d3fa3361615c
+		summarizeBy: none
+		sourceColumn: DataVencimento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DataPagamento
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		lineageTag: f678d8e3-74b0-50a5-ba57-f35c7f89edca
+		summarizeBy: none
+		sourceColumn: DataPagamento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column TipoFatura
+		dataType: string
+		lineageTag: 9739c225-e15e-5220-b997-c8f4642110aa
+		summarizeBy: none
+		sourceColumn: TipoFatura
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoCobranca
+		dataType: string
+		lineageTag: 8eebd2dd-2d15-5d88-81f6-db2b077ffa7f
+		summarizeBy: none
+		sourceColumn: TipoCobranca
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValorBruto
+		dataType: double
+		isHidden
+		formatString: R$ #,0.00
+		lineageTag: 1f45bd09-a02d-52cf-bc35-9ea65ed7cfa3
+		summarizeBy: none
+		sourceColumn: ValorBruto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Desconto
+		dataType: double
+		isHidden
+		formatString: R$ #,0.00
+		lineageTag: b4a4b7a9-63b1-5cef-862a-1322ed126a94
+		summarizeBy: none
+		sourceColumn: Desconto
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValorLiquido
+		dataType: double
+		isHidden
+		formatString: R$ #,0.00
+		lineageTag: a35673b8-ae39-5fe1-9301-3e9479db5b4d
+		summarizeBy: none
+		sourceColumn: ValorLiquido
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValorPago
+		dataType: double
+		isHidden
+		formatString: R$ #,0.00
+		lineageTag: c76b5349-3d05-5f94-9512-64368b03cb60
+		summarizeBy: none
+		sourceColumn: ValorPago
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValorEstornado
+		dataType: double
+		isHidden
+		formatString: R$ #,0.00
+		lineageTag: 28a28100-43f0-5654-9a1c-4398a20ffd3c
+		summarizeBy: none
+		sourceColumn: ValorEstornado
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValorRecebido
+		dataType: double
+		isHidden
+		formatString: R$ #,0.00
+		lineageTag: 110da610-3c58-5026-900c-f309fac4af47
+		summarizeBy: none
+		sourceColumn: ValorRecebido
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusPagamento
+		dataType: string
+		lineageTag: 7be39936-3ba9-51c3-976b-ea80ba5cedb1
+		summarizeBy: none
+		sourceColumn: StatusPagamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiasAtraso
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 68910f5a-f19c-579b-9e23-9b11bb8c9f98
+		summarizeBy: none
+		sourceColumn: DiasAtraso
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fFinanceiro = m
+		mode: import
+		source =
+				let
+					Fonte = Csv.Document(File.Contents(PastaDados & "fFinanceiro.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars = true]),
+					Colunas = Table.SelectColumns(Cabecalho, {"FaturaID", "ClienteID", "DataEmissao", "DataVencimento", "DataPagamento", "TipoFatura", "TipoCobranca", "ValorBruto", "Desconto", "ValorLiquido", "ValorPago", "ValorEstornado", "ValorRecebido", "StatusPagamento", "DiasAtraso"}),
+					Tipos = Table.TransformColumnTypes(Colunas, {{"FaturaID", Int64.Type}, {"ClienteID", Int64.Type}, {"DataEmissao", type date}, {"DataVencimento", type date}, {"DataPagamento", type date}, {"TipoFatura", type text}, {"TipoCobranca", type text}, {"ValorBruto", type number}, {"Desconto", type number}, {"ValorLiquido", type number}, {"ValorPago", type number}, {"ValorEstornado", type number}, {"ValorRecebido", type number}, {"StatusPagamento", type text}, {"DiasAtraso", Int64.Type}}, "en-US")
+				in
+					Tipos
+
+	annotation PBI_ResultType = Table
+

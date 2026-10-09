@@ -1,0 +1,51 @@
+/// Canais de aquisição.
+table dCanalAquisicao
+	lineageTag: 8e950381-494a-5721-afbf-8b8dae00533b
+
+	column CanalID
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: b2f40a79-a679-587b-a9cd-48fd9721d784
+		summarizeBy: none
+		sourceColumn: CanalID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Canal
+		dataType: string
+		lineageTag: e6c952f3-4095-51b4-b86f-cb3cd8255a4f
+		summarizeBy: none
+		sourceColumn: Canal
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoCanal
+		dataType: string
+		lineageTag: 0de88d73-eaa2-567c-a1c8-a106c3d06261
+		summarizeBy: none
+		sourceColumn: TipoCanal
+
+		annotation SummarizationSetBy = Automatic
+
+	column MidiaPaga
+		dataType: string
+		lineageTag: 673666e4-9d6b-512f-871f-a0c56219b51c
+		summarizeBy: none
+		sourceColumn: MidiaPaga
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dCanalAquisicao = m
+		mode: import
+		source =
+				let
+					Fonte = Csv.Document(File.Contents(PastaDados & "dCanalAquisicao.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars = true]),
+					Colunas = Table.SelectColumns(Cabecalho, {"CanalID", "Canal", "TipoCanal", "MidiaPaga"}),
+					Tipos = Table.TransformColumnTypes(Colunas, {{"CanalID", Int64.Type}, {"Canal", type text}, {"TipoCanal", type text}, {"MidiaPaga", type text}}, "en-US")
+				in
+					Tipos
+
+	annotation PBI_ResultType = Table
+

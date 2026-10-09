@@ -1,0 +1,389 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "7d838b87c0580cc53996",
+  "position": {
+    "x": 292,
+    "y": 344,
+    "z": 1020,
+    "height": 390,
+    "width": 1038,
+    "tabOrder": 1020
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dEtapaWaterfall"
+                    }
+                  },
+                  "Property": "Etapa"
+                }
+              },
+              "queryRef": "dEtapaWaterfall.Etapa",
+              "nativeQueryRef": "Etapa",
+              "active": true,
+              "displayName": "etapa"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dEtapaWaterfall"
+                    }
+                  },
+                  "Property": "OrdemEtapa"
+                }
+              },
+              "queryRef": "dEtapaWaterfall.OrdemEtapa",
+              "nativeQueryRef": "OrdemEtapa",
+              "active": true,
+              "displayName": "ordem"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dEtapaWaterfall"
+                    }
+                  },
+                  "Property": "TipoEtapa"
+                }
+              },
+              "queryRef": "dEtapaWaterfall.TipoEtapa",
+              "nativeQueryRef": "TipoEtapa",
+              "active": true,
+              "displayName": "tipo"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Valor Etapa Waterfall"
+                }
+              },
+              "queryRef": "_Medidas.Valor Etapa Waterfall",
+              "nativeQueryRef": "Valor Etapa Waterfall",
+              "active": false,
+              "displayName": "valor"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Rótulo Etapa Waterfall"
+                }
+              },
+              "queryRef": "_Medidas.Rótulo Etapa Waterfall",
+              "nativeQueryRef": "Rótulo Etapa Waterfall",
+              "active": false,
+              "displayName": "rotulo"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\n  \"data\": {\n    \"name\": \"dataset\"\n  },\n  \"width\": \"container\",\n  \"height\": \"container\",\n  \"transform\": [\n    {\n      \"filter\": \"datum.tipo != ''migr'' || abs(datum.valor) >= 1\"\n    },\n    {\n      \"window\": [\n        {\n          \"op\": \"sum\",\n          \"field\": \"valor\",\n          \"as\": \"acum\"\n        }\n      ],\n      \"sort\": [\n        {\n          \"field\": \"ordem\"\n        }\n      ]\n    },\n    {\n      \"calculate\": \"(datum.tipo == ''fim'' || datum.tipo == ''inicio'') ? 0 : datum.acum - datum.valor\",\n      \"as\": \"y0\"\n    },\n    {\n      \"calculate\": \"datum.tipo == ''fim'' ? datum.valor : datum.acum\",\n      \"as\": \"y1\"\n    },\n    {\n      \"window\": [\n        {\n          \"op\": \"lead\",\n          \"field\": \"etapa\",\n          \"as\": \"prox\"\n        }\n      ],\n      \"sort\": [\n        {\n          \"field\": \"ordem\"\n        }\n      ]\n    },\n    {\n      \"calculate\": \"max(datum.y0, datum.y1)\",\n      \"as\": \"topo\"\n    }\n  ],\n  \"encoding\": {\n    \"x\": {\n      \"field\": \"etapa\",\n      \"type\": \"nominal\",\n      \"sort\": {\n        \"field\": \"ordem\",\n        \"op\": \"min\"\n      },\n      \"axis\": {\n        \"title\": null,\n        \"labelAngle\": 0,\n        \"labelFontSize\": 12.5,\n        \"labelColor\": \"#DCE6F7\",\n        \"labelFontWeight\": 600,\n        \"domain\": false,\n        \"ticks\": false,\n        \"labelPadding\": 12\n      }\n    }\n  },\n  \"layer\": [\n    {\n      \"mark\": {\n        \"type\": \"bar\",\n        \"cornerRadius\": 7,\n        \"width\": {\n          \"band\": 0.62\n        }\n      },\n      \"encoding\": {\n        \"y\": {\n          \"field\": \"y0\",\n          \"type\": \"quantitative\",\n          \"axis\": null,\n          \"scale\": {\n            \"zero\": true,\n            \"nice\": true\n          }\n        },\n        \"y2\": {\n          \"field\": \"y1\"\n        },\n        \"color\": {\n          \"field\": \"tipo\",\n          \"type\": \"nominal\",\n          \"legend\": null,\n          \"scale\": {\n            \"domain\": [\n              \"inicio\",\n              \"ganho\",\n              \"migr\",\n              \"perda\",\n              \"fim\"\n            ],\n            \"range\": [\n              \"#1678FF\",\n              \"#00D7C0\",\n              \"#6E86B3\",\n              \"#FF607A\",\n              \"#6736F5\"\n            ]\n          }\n        },\n        \"tooltip\": [\n          {\n            \"field\": \"etapa\",\n            \"title\": \"Etapa\"\n          },\n          {\n            \"field\": \"rotulo\",\n            \"title\": \"Valor\"\n          }\n        ]\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"filter\": \"datum.prox != null\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"rule\",\n        \"color\": \"#A9BBD8\",\n        \"opacity\": 0.6,\n        \"strokeDash\": [\n          4,\n          3\n        ],\n        \"strokeWidth\": 1.4,\n        \"xOffset\": {\n          \"expr\": \"bandwidth(''x'') * 0.31\"\n        },\n        \"x2Offset\": {\n          \"expr\": \"-bandwidth(''x'') * 0.31\"\n        }\n      },\n      \"encoding\": {\n        \"x2\": {\n          \"field\": \"prox\"\n        },\n        \"y\": {\n          \"field\": \"y1\",\n          \"type\": \"quantitative\"\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"text\",\n        \"dy\": -11,\n        \"fontSize\": 13.5,\n        \"fontWeight\": 700,\n        \"color\": \"#FFFFFF\"\n      },\n      \"encoding\": {\n        \"y\": {\n          \"field\": \"topo\",\n          \"type\": \"quantitative\"\n        },\n        \"text\": {\n          \"field\": \"rotulo\"\n        }\n      }\n    }\n  ]\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"autosize\": {\n    \"type\": \"fit\",\n    \"contains\": \"padding\"\n  },\n  \"view\": {\n    \"stroke\": \"transparent\"\n  },\n  \"font\": \"Segoe UI\",\n  \"padding\": {\n    \"left\": 6,\n    \"right\": 10,\n    \"top\": 10,\n    \"bottom\": 6\n  },\n  \"axis\": {\n    \"labelColor\": \"#A9BBD8\",\n    \"gridColor\": \"#1E3462\",\n    \"domainColor\": \"#1E3462\",\n    \"tickColor\": \"#1E3462\",\n    \"titleColor\": \"#A9BBD8\",\n    \"labelFont\": \"Segoe UI\",\n    \"labelFontSize\": 11,\n    \"gridDash\": [\n      3,\n      3\n    ]\n  },\n  \"legend\": {\n    \"labelColor\": \"#A9BBD8\",\n    \"titleColor\": \"#A9BBD8\",\n    \"labelFont\": \"Segoe UI\",\n    \"titleFont\": \"Segoe UI\"\n  },\n  \"text\": {\n    \"color\": \"#FFFFFF\",\n    \"font\": \"Segoe UI\"\n  }\n}'"
+                }
+              }
+            },
+            "renderMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'svg'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'6.4.3'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "351D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "1038D"
+                }
+              }
+            },
+            "supportFieldConfiguration": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"etapa\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":false,\"formatted\":false,\"names\":false},\"ordem\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":false,\"formatted\":false,\"names\":false},\"tipo\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":false,\"formatted\":false,\"names\":false},\"valor\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":true,\"formatted\":true,\"names\":false},\"rotulo\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":true,\"formatted\":true,\"names\":false}}'"
+                }
+              }
+            },
+            "denebMetaVersion": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2'"
+                }
+              }
+            },
+            "consolidateFieldParameters": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2.0.0.0'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'MRR Waterfall  ·  MRR inicial + novo + expansão + reativação − contração − churn = MRR final'"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI Semibold'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

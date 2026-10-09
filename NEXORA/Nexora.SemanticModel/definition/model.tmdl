@@ -1,0 +1,47 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: pt-BR
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_ProTooling = ["DevMode","MCP-PBIModeling"]
+
+annotation PBI_QueryOrder = ["dCalendario","dCliente","dPlano","dSegmento","dPorte","dCanalAquisicao","dFuncionalidade","dUsuario","dAddOn","dFaixaHealth","fSnapshotMRR","fMovimentoMRR","fAssinaturas","fAddOns","fUsoProduto","fEventosProduto","fMarketing","fLeads","fTrials","fSuporte","fFinanceiro","fAquisicao","fCohortMensal","dCohort","PastaDados"]
+
+ref table _Medidas
+ref table dCalendario
+ref table dCliente
+ref table dPlano
+ref table dSegmento
+ref table dPorte
+ref table dCanalAquisicao
+ref table dFuncionalidade
+ref table dUsuario
+ref table dAddOn
+ref table dFaixaHealth
+ref table fSnapshotMRR
+ref table fMovimentoMRR
+ref table fAssinaturas
+ref table fAddOns
+ref table fUsoProduto
+ref table fEventosProduto
+ref table fMarketing
+ref table fLeads
+ref table fTrials
+ref table fSuporte
+ref table fFinanceiro
+ref table fAquisicao
+ref table fCohortMensal
+ref table dTipoMovimento
+ref table dEtapaWaterfall
+ref table dEtapaFunil
+ref table dCohort
+
+ref cultureInfo pt-BR
+

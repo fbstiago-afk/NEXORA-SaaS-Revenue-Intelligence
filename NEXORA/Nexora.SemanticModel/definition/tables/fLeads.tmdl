@@ -1,0 +1,105 @@
+/// Grão: lead. Estágios Lead → MQL → SQL → Trial → Cliente.
+table fLeads
+	lineageTag: 3fa33bda-2e15-5aef-8672-9bf177c88f1c
+
+	column LeadID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1c0d8666-315c-5855-b6cc-f6839be33179
+		summarizeBy: none
+		sourceColumn: LeadID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataLead
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		lineageTag: 7d6e1bb4-752a-5407-b750-f8a53e108e47
+		summarizeBy: none
+		sourceColumn: DataLead
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CanalID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8026ca9f-92e8-5d1d-9e32-6d299c760a25
+		summarizeBy: none
+		sourceColumn: CanalID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SegmentoID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: edbbf3ff-011e-5760-8acd-c5e798f8014d
+		summarizeBy: none
+		sourceColumn: SegmentoID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PorteID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: cfc20563-1063-5734-a013-1b7f24521662
+		summarizeBy: none
+		sourceColumn: PorteID
+
+		annotation SummarizationSetBy = Automatic
+
+	column MQL
+		dataType: string
+		isHidden
+		lineageTag: fef0b8f5-d123-5672-937b-ba73b399ff4f
+		summarizeBy: none
+		sourceColumn: MQL
+
+		annotation SummarizationSetBy = Automatic
+
+	column SQL
+		dataType: string
+		isHidden
+		lineageTag: 6415a2ba-f5c1-5206-8321-96df41676cb4
+		summarizeBy: none
+		sourceColumn: SQL
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trial
+		dataType: string
+		isHidden
+		lineageTag: 485557f8-8a04-50ce-a502-a0b3501d0a0c
+		summarizeBy: none
+		sourceColumn: Trial
+
+		annotation SummarizationSetBy = Automatic
+
+	column Convertido
+		dataType: string
+		isHidden
+		lineageTag: df6c860b-8606-5de2-9aff-62142fb3dddf
+		summarizeBy: none
+		sourceColumn: Convertido
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fLeads = m
+		mode: import
+		source =
+				let
+					Fonte = Csv.Document(File.Contents(PastaDados & "fLeads.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars = true]),
+					Colunas = Table.SelectColumns(Cabecalho, {"LeadID", "DataLead", "CanalID", "SegmentoID", "PorteID", "MQL", "SQL", "Trial", "Convertido"}),
+					Tipos = Table.TransformColumnTypes(Colunas, {{"LeadID", Int64.Type}, {"DataLead", type date}, {"CanalID", Int64.Type}, {"SegmentoID", Int64.Type}, {"PorteID", Int64.Type}, {"MQL", type text}, {"SQL", type text}, {"Trial", type text}, {"Convertido", type text}}, "en-US")
+				in
+					Tipos
+
+	annotation PBI_ResultType = Table
+

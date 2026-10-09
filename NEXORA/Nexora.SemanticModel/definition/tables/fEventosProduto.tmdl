@@ -1,0 +1,79 @@
+/// Grão: cliente × mês × funcionalidade.
+table fEventosProduto
+	lineageTag: 1221679e-1d07-58af-8dfd-af83271c933d
+
+	column EventoID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 78932131-c839-501a-abfa-858fd971b160
+		summarizeBy: none
+		sourceColumn: EventoID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClienteID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 79ec5712-a98e-518c-8330-20d0de0076de
+		summarizeBy: none
+		sourceColumn: ClienteID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataMes
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		lineageTag: cddaa469-3889-5039-9ebe-4f1078869b8f
+		summarizeBy: none
+		sourceColumn: DataMes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FuncionalidadeID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 23c3f774-ec79-5773-9173-e4a101108606
+		summarizeBy: none
+		sourceColumn: FuncionalidadeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Eventos
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c485f3fb-13b9-5640-81d8-d1b4b8ae3c4e
+		summarizeBy: none
+		sourceColumn: Eventos
+
+		annotation SummarizationSetBy = Automatic
+
+	column UsuariosUnicos
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 82e73d7e-5d68-5f59-a1af-e80100370264
+		summarizeBy: none
+		sourceColumn: UsuariosUnicos
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fEventosProduto = m
+		mode: import
+		source =
+				let
+					Fonte = Csv.Document(File.Contents(PastaDados & "fEventosProduto.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars = true]),
+					Colunas = Table.SelectColumns(Cabecalho, {"EventoID", "ClienteID", "DataMes", "FuncionalidadeID", "Eventos", "UsuariosUnicos"}),
+					Tipos = Table.TransformColumnTypes(Colunas, {{"EventoID", Int64.Type}, {"ClienteID", Int64.Type}, {"DataMes", type date}, {"FuncionalidadeID", Int64.Type}, {"Eventos", Int64.Type}, {"UsuariosUnicos", Int64.Type}}, "en-US")
+				in
+					Tipos
+
+	annotation PBI_ResultType = Table
+

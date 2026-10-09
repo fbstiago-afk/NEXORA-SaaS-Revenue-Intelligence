@@ -1,0 +1,5 @@
+PorteID,Porte,OrdemPorte,FaixaFuncionarios
+1,Micro,1,1-9
+2,Pequena,2,10-49
+3,Média,3,50-249
+4,Enterprise,4,250+

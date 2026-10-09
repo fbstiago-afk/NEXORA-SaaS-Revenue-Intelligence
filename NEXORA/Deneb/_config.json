@@ -1,0 +1,39 @@
+{
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "view": {
+    "stroke": "transparent"
+  },
+  "font": "Segoe UI",
+  "padding": {
+    "left": 6,
+    "right": 10,
+    "top": 10,
+    "bottom": 6
+  },
+  "axis": {
+    "labelColor": "#A9BBD8",
+    "gridColor": "#1E3462",
+    "domainColor": "#1E3462",
+    "tickColor": "#1E3462",
+    "titleColor": "#A9BBD8",
+    "labelFont": "Segoe UI",
+    "labelFontSize": 11,
+    "gridDash": [
+      3,
+      3
+    ]
+  },
+  "legend": {
+    "labelColor": "#A9BBD8",
+    "titleColor": "#A9BBD8",
+    "labelFont": "Segoe UI",
+    "titleFont": "Segoe UI"
+  },
+  "text": {
+    "color": "#FFFFFF",
+    "font": "Segoe UI"
+  }
+}

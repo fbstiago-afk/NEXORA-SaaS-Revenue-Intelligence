@@ -1,0 +1,90 @@
+/// Planos comerciais.
+table dPlano
+	lineageTag: 1df9b4ea-0ad3-5abe-9e92-07c35b9ad9e0
+
+	column PlanoID
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: 6ce32832-162b-52d4-b704-fc1c29869e41
+		summarizeBy: none
+		sourceColumn: PlanoID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Plano
+		dataType: string
+		lineageTag: 6bf00f30-79af-510d-a35e-3f024b3139fa
+		summarizeBy: none
+		sourceColumn: Plano
+		sortByColumn: OrdemPlano
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrdemPlano
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 17c179f8-d244-5077-bbd6-7bca5de7ea8f
+		summarizeBy: none
+		sourceColumn: OrdemPlano
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrecoBaseMensal
+		dataType: double
+		formatString: R$ #,0.00
+		lineageTag: ef5cac16-048d-513c-947b-65efc09324b1
+		summarizeBy: none
+		sourceColumn: PrecoBaseMensal
+
+		annotation SummarizationSetBy = Automatic
+
+	column UsuariosInclusos
+		dataType: int64
+		formatString: 0
+		lineageTag: c559a71e-79f3-5d1a-95c1-1ef1001b3ce0
+		summarizeBy: none
+		sourceColumn: UsuariosInclusos
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrecoUsuarioExtra
+		dataType: double
+		formatString: R$ #,0.00
+		lineageTag: 91652604-b843-5274-8d61-5471cf72dc51
+		summarizeBy: none
+		sourceColumn: PrecoUsuarioExtra
+
+		annotation SummarizationSetBy = Automatic
+
+	column Posicionamento
+		dataType: string
+		lineageTag: 9bdffb2b-2905-5be8-bbf6-ac0b0ab2c2b6
+		summarizeBy: none
+		sourceColumn: Posicionamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column CorPlano
+		dataType: string
+		isHidden
+		lineageTag: 13653616-5954-5369-81cf-a31d9ea53487
+		summarizeBy: none
+		sourceColumn: CorPlano
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dPlano = m
+		mode: import
+		source =
+				let
+					Fonte = Csv.Document(File.Contents(PastaDados & "dPlano.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars = true]),
+					Colunas = Table.SelectColumns(Cabecalho, {"PlanoID", "Plano", "OrdemPlano", "PrecoBaseMensal", "UsuariosInclusos", "PrecoUsuarioExtra", "Posicionamento", "CorPlano"}),
+					Tipos = Table.TransformColumnTypes(Colunas, {{"PlanoID", Int64.Type}, {"Plano", type text}, {"OrdemPlano", Int64.Type}, {"PrecoBaseMensal", type number}, {"UsuariosInclusos", Int64.Type}, {"PrecoUsuarioExtra", type number}, {"Posicionamento", type text}, {"CorPlano", type text}}, "en-US")
+				in
+					Tipos
+
+	annotation PBI_ResultType = Table
+

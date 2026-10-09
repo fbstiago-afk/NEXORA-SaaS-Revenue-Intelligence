@@ -1,0 +1,421 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "f774cab4a44daeb25a95",
+  "position": {
+    "x": 292,
+    "y": 344,
+    "z": 1020,
+    "height": 696,
+    "width": 1038,
+    "tabOrder": 1020
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dCohort"
+                    }
+                  },
+                  "Property": "Cohort"
+                }
+              },
+              "queryRef": "dCohort.Cohort",
+              "nativeQueryRef": "Cohort",
+              "active": true,
+              "displayName": "cohort"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dCohort"
+                    }
+                  },
+                  "Property": "CohortIdx"
+                }
+              },
+              "queryRef": "dCohort.CohortIdx",
+              "nativeQueryRef": "CohortIdx",
+              "active": true,
+              "displayName": "cidx"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fCohortMensal"
+                    }
+                  },
+                  "Property": "IdadeCohort"
+                }
+              },
+              "queryRef": "fCohortMensal.IdadeCohort",
+              "nativeQueryRef": "IdadeCohort",
+              "active": true,
+              "displayName": "idade"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Cohort Retenção Heatmap"
+                }
+              },
+              "queryRef": "_Medidas.Cohort Retenção Heatmap",
+              "nativeQueryRef": "Cohort Retenção Heatmap",
+              "active": false,
+              "displayName": "ret"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Rótulo Cohort"
+                }
+              },
+              "queryRef": "_Medidas.Rótulo Cohort",
+              "nativeQueryRef": "Rótulo Cohort",
+              "active": false,
+              "displayName": "rot"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Clientes Iniciais Cohort"
+                }
+              },
+              "queryRef": "_Medidas.Clientes Iniciais Cohort",
+              "nativeQueryRef": "Clientes Iniciais Cohort",
+              "active": false,
+              "displayName": "base"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Clientes Ativos Cohort"
+                }
+              },
+              "queryRef": "_Medidas.Clientes Ativos Cohort",
+              "nativeQueryRef": "Clientes Ativos Cohort",
+              "active": false,
+              "displayName": "ativos"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\n  \"data\": {\n    \"name\": \"dataset\"\n  },\n  \"width\": \"container\",\n  \"height\": \"container\",\n  \"transform\": [\n    {\n      \"filter\": \"isValid(datum.ret)\"\n    },\n    {\n      \"calculate\": \"''M'' + datum.idade\",\n      \"as\": \"m\"\n    }\n  ],\n  \"encoding\": {\n    \"x\": {\n      \"field\": \"idade\",\n      \"type\": \"ordinal\",\n      \"axis\": {\n        \"title\": null,\n        \"orient\": \"top\",\n        \"labelExpr\": \"''M'' + datum.value\",\n        \"labelColor\": \"#A9BBD8\",\n        \"domain\": false,\n        \"ticks\": false,\n        \"labelFontSize\": 11,\n        \"labelFontWeight\": 600,\n        \"labelAngle\": 0\n      }\n    },\n    \"y\": {\n      \"field\": \"cohort\",\n      \"type\": \"ordinal\",\n      \"sort\": {\n        \"field\": \"cidx\",\n        \"op\": \"min\"\n      },\n      \"axis\": {\n        \"title\": null,\n        \"labelColor\": \"#A9BBD8\",\n        \"domain\": false,\n        \"ticks\": false,\n        \"labelFontSize\": 10,\n        \"labelPadding\": 6\n      }\n    }\n  },\n  \"layer\": [\n    {\n      \"mark\": {\n        \"type\": \"rect\",\n        \"cornerRadius\": 3,\n        \"stroke\": \"#050D20\",\n        \"strokeWidth\": 1.5\n      },\n      \"encoding\": {\n        \"color\": {\n          \"field\": \"ret\",\n          \"type\": \"quantitative\",\n          \"scale\": {\n            \"domain\": [\n              0.5,\n              0.72,\n              0.86,\n              1\n            ],\n            \"range\": [\n              \"#FF607A\",\n              \"#6736F5\",\n              \"#1678FF\",\n              \"#00D7C0\"\n            ],\n            \"clamp\": true\n          },\n          \"legend\": {\n            \"orient\": \"bottom\",\n            \"direction\": \"horizontal\",\n            \"title\": \"Retenção de logos\",\n            \"format\": \".0%\",\n            \"gradientLength\": 320,\n            \"gradientThickness\": 8,\n            \"titleFontSize\": 11,\n            \"labelFontSize\": 10\n          }\n        },\n        \"tooltip\": [\n          {\n            \"field\": \"cohort\",\n            \"title\": \"Cohort\"\n          },\n          {\n            \"field\": \"m\",\n            \"title\": \"Idade\"\n          },\n          {\n            \"field\": \"rot\",\n            \"title\": \"Retenção\"\n          },\n          {\n            \"field\": \"base\",\n            \"title\": \"Clientes iniciais\"\n          },\n          {\n            \"field\": \"ativos\",\n            \"title\": \"Ativos\"\n          }\n        ]\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"text\",\n        \"fontSize\": 9.5,\n        \"fontWeight\": 600,\n        \"color\": \"#FFFFFF\"\n      },\n      \"encoding\": {\n        \"text\": {\n          \"field\": \"rot\"\n        }\n      }\n    }\n  ]\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"autosize\": {\n    \"type\": \"fit\",\n    \"contains\": \"padding\"\n  },\n  \"view\": {\n    \"stroke\": \"transparent\"\n  },\n  \"font\": \"Segoe UI\",\n  \"padding\": {\n    \"left\": 6,\n    \"right\": 10,\n    \"top\": 10,\n    \"bottom\": 6\n  },\n  \"axis\": {\n    \"labelColor\": \"#A9BBD8\",\n    \"gridColor\": \"#1E3462\",\n    \"domainColor\": \"#1E3462\",\n    \"tickColor\": \"#1E3462\",\n    \"titleColor\": \"#A9BBD8\",\n    \"labelFont\": \"Segoe UI\",\n    \"labelFontSize\": 11,\n    \"gridDash\": [\n      3,\n      3\n    ]\n  },\n  \"legend\": {\n    \"labelColor\": \"#A9BBD8\",\n    \"titleColor\": \"#A9BBD8\",\n    \"labelFont\": \"Segoe UI\",\n    \"titleFont\": \"Segoe UI\"\n  },\n  \"text\": {\n    \"color\": \"#FFFFFF\",\n    \"font\": \"Segoe UI\"\n  }\n}'"
+                }
+              }
+            },
+            "renderMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'svg'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'6.4.3'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "657D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "1038D"
+                }
+              }
+            },
+            "supportFieldConfiguration": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"cohort\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":false,\"formatted\":false,\"names\":false},\"cidx\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":false,\"formatted\":false,\"names\":false},\"idade\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":false,\"formatted\":false,\"names\":false},\"ret\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":true,\"formatted\":true,\"names\":false},\"rot\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":true,\"formatted\":true,\"names\":false},\"base\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":true,\"formatted\":true,\"names\":false},\"ativos\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":true,\"formatted\":true,\"names\":false}}'"
+                }
+              }
+            },
+            "denebMetaVersion": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2'"
+                }
+              }
+            },
+            "consolidateFieldParameters": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2.0.0.0'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Cohort Retention  ·  % de clientes ativos por mês de aquisição (M0–M12)'"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI Semibold'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

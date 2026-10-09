@@ -1,0 +1,386 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 2298.8814416911791,
+            "y": 991.37713334967339
+          },
+          "nodeIndex": "_Medidas",
+          "nodeLineageTag": "8bb625b9-c438-53cb-bac9-fa04bf1ddf6f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 1389.3270714687267
+          },
+          "nodeIndex": "dAddOn",
+          "nodeLineageTag": "8b5019cf-60a1-5afc-891f-3accb783e340",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 924.20873553876959,
+            "y": 1020.6833532058679
+          },
+          "nodeIndex": "dCalendario",
+          "nodeLineageTag": "b6811300-9356-5ea9-9aed-ceab934d4e57",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1712.6890530445687,
+            "y": 921.70611017129977
+          },
+          "nodeIndex": "dCanalAquisicao",
+          "nodeLineageTag": "8e950381-494a-5721-afbf-8b8dae00533b",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1132.1141892726212,
+            "y": 659.98886665038663
+          },
+          "nodeIndex": "dCliente",
+          "nodeLineageTag": "ff27c1b7-e749-5c8f-a058-037e71ca9f6e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 968.18652670559391,
+            "y": 196.03921508626422
+          },
+          "nodeIndex": "dCohort",
+          "nodeLineageTag": "84df0e50-ef92-5fff-a867-7429ddfcaeab",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2582.8814416911791,
+            "y": 1077.3771333496734
+          },
+          "nodeIndex": "dEtapaFunil",
+          "nodeLineageTag": "f9b76c45-0b81-560a-9c86-998633db55fb",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2866.8814416911791,
+            "y": 1065.3771333496734
+          },
+          "nodeIndex": "dEtapaWaterfall",
+          "nodeLineageTag": "3f17d0d7-aeba-592b-87d6-8924f0736a69",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 596.54088580243911,
+            "y": 1866.8787000946168
+          },
+          "nodeIndex": "dFaixaHealth",
+          "nodeLineageTag": "07241be4-a69f-5655-aa98-0cd1c8910abf",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 424.72589395163948,
+            "y": 168.3494351876152
+          },
+          "nodeIndex": "dFuncionalidade",
+          "nodeLineageTag": "1c162927-f30f-5d50-bdd1-cc6b19d17d72",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1421.5127510820744,
+            "y": 1019.1094798571603
+          },
+          "nodeIndex": "dPlano",
+          "nodeLineageTag": "1df9b4ea-0ad3-5abe-9e92-07c35b9ad9e0",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1821.6245146095096,
+            "y": 332.37794123454546
+          },
+          "nodeIndex": "dPorte",
+          "nodeLineageTag": "03f7392a-f45c-50a4-b91a-89c16a3d8931",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1049.2074804021256,
+            "y": 12.181217385509626
+          },
+          "nodeIndex": "dSegmento",
+          "nodeLineageTag": "423a33ae-2127-52eb-a891-97b60ddcc089",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1104.551671342804,
+            "y": 1932.0278489912205
+          },
+          "nodeIndex": "dTipoMovimento",
+          "nodeLineageTag": "4b75535d-d185-5dc3-b6ae-adf1242f131e",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2064.8814416911791,
+            "y": 1364.440592886217
+          },
+          "nodeIndex": "dUsuario",
+          "nodeLineageTag": "ad598e98-4b9b-5e77-a5b3-306047f5523b",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50.6280676653181,
+            "y": 1062.008517235915
+          },
+          "nodeIndex": "fAddOns",
+          "nodeLineageTag": "57b6291b-47a3-5b1e-bfc7-f481e4a05814",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1012.0384329162007,
+            "y": 1380.0447494410464
+          },
+          "nodeIndex": "fAquisicao",
+          "nodeLineageTag": "efffb544-4182-5f8e-9870-a6e855e0b774",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1303.5437007429471,
+            "y": 1573.4935267486703
+          },
+          "nodeIndex": "fAssinaturas",
+          "nodeLineageTag": "e8208bbb-597c-55e0-abb0-1226023cce4a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1542.8097295939851,
+            "y": -50
+          },
+          "nodeIndex": "fCohortMensal",
+          "nodeLineageTag": "d073491d-920f-5c08-896c-36b1a4081015",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 675.27307479928493,
+            "y": 377.83297262804763
+          },
+          "nodeIndex": "fEventosProduto",
+          "nodeLineageTag": "1221679e-1d07-58af-8dfd-af83271c933d",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 341.85712449189259,
+            "y": 1020.6387870920939
+          },
+          "nodeIndex": "fFinanceiro",
+          "nodeLineageTag": "dc91e5af-099d-525f-888a-b48b239feb4c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1567.7390800492058,
+            "y": 567.17736361994776
+          },
+          "nodeIndex": "fLeads",
+          "nodeLineageTag": "3fa33bda-2e15-5aef-8672-9bf177c88f1c",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2003.8651040329112,
+            "y": 1010.7724394276995
+          },
+          "nodeIndex": "fMarketing",
+          "nodeLineageTag": "481ad94e-7611-5825-9eea-d4c0c2811019",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1481.2466056045835,
+            "y": 1932.7542666993468
+          },
+          "nodeIndex": "fMovimentoMRR",
+          "nodeLineageTag": "59818b91-e389-598f-9480-17324e499707",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 632.89364846137278,
+            "y": 1020.6298539418889
+          },
+          "nodeIndex": "fSnapshotMRR",
+          "nodeLineageTag": "aa8f2a25-35cc-560c-bf3f-036f5e502d19",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1762.1108251170961,
+            "y": 1571.9884338719398
+          },
+          "nodeIndex": "fSuporte",
+          "nodeLineageTag": "e1cd5291-8519-55b4-8573-286c8c316239",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1259.3146741100718,
+            "y": 306.72438151088363
+          },
+          "nodeIndex": "fTrials",
+          "nodeLineageTag": "46ae50ad-54d9-5282-9cd2-3d5f90cd1acb",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 719.61025336010914,
+            "y": 1507.7816407460709
+          },
+          "nodeIndex": "fUsoProduto",
+          "nodeLineageTag": "77945862-447c-528a-b050-48e4779aa513",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

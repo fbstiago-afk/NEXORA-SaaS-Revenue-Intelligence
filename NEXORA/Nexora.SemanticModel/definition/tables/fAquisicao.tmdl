@@ -1,0 +1,111 @@
+/// Grão: primeira aquisição do cliente, com custo de aquisição alocado (Σ = investimento).
+table fAquisicao
+	lineageTag: efffb544-4182-5f8e-9870-a6e855e0b774
+
+	column ClienteID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4db3e0c0-b4b9-57fb-9009-b0d0512b9fa0
+		summarizeBy: none
+		sourceColumn: ClienteID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataAquisicao
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		lineageTag: 824b0437-fd03-5733-b874-9e584600c8df
+		summarizeBy: none
+		sourceColumn: DataAquisicao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DataMes
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		lineageTag: f3ea8552-9893-5cbd-865f-f101b8b9b782
+		summarizeBy: none
+		sourceColumn: DataMes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CanalID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b673df69-10fa-5485-ad2a-bfb65409dc46
+		summarizeBy: none
+		sourceColumn: CanalID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PlanoEntradaID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b8a4e237-9ac2-59fd-a6c0-cf0f41ebeb08
+		summarizeBy: none
+		sourceColumn: PlanoEntradaID
+
+		annotation SummarizationSetBy = Automatic
+
+	column LeadID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a5e5c66c-2bcb-5758-a74f-01221b7a0a94
+		summarizeBy: none
+		sourceColumn: LeadID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrialID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 75ceb639-f6c5-53ca-91b9-484501f8295e
+		summarizeBy: none
+		sourceColumn: TrialID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustoAquisicao
+		dataType: double
+		isHidden
+		formatString: R$ #,0.00
+		lineageTag: 113c81ff-43cd-5485-b6f7-6eac321a31e3
+		summarizeBy: none
+		sourceColumn: CustoAquisicao
+
+		annotation SummarizationSetBy = Automatic
+
+	column MRRInicial
+		dataType: double
+		isHidden
+		formatString: R$ #,0.00
+		lineageTag: e99c0fd9-561f-5e3b-9f54-93cef44d3868
+		summarizeBy: none
+		sourceColumn: MRRInicial
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fAquisicao = m
+		mode: import
+		source =
+				let
+					Fonte = Csv.Document(File.Contents(PastaDados & "fAquisicao.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars = true]),
+					Colunas = Table.SelectColumns(Cabecalho, {"ClienteID", "DataAquisicao", "DataMes", "CanalID", "PlanoEntradaID", "LeadID", "TrialID", "CustoAquisicao", "MRRInicial"}),
+					Tipos = Table.TransformColumnTypes(Colunas, {{"ClienteID", Int64.Type}, {"DataAquisicao", type date}, {"DataMes", type date}, {"CanalID", Int64.Type}, {"PlanoEntradaID", Int64.Type}, {"LeadID", Int64.Type}, {"TrialID", Int64.Type}, {"CustoAquisicao", type number}, {"MRRInicial", type number}}, "en-US")
+				in
+					Tipos
+
+	annotation PBI_ResultType = Table
+

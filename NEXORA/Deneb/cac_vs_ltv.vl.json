@@ -1,0 +1,187 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "name": "dataset"
+  },
+  "width": "container",
+  "height": "container",
+  "transform": [
+    {
+      "filter": "datum.ltv > 0"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "ltv",
+          "as": "mx"
+        }
+      ]
+    },
+    {
+      "calculate": "datum.ltv / datum.mx * 0.58",
+      "as": "fl"
+    },
+    {
+      "calculate": "datum.cac / datum.mx * 0.58",
+      "as": "fc"
+    },
+    {
+      "calculate": "0.58",
+      "as": "trilho"
+    },
+    {
+      "calculate": "0.60",
+      "as": "xr"
+    },
+    {
+      "calculate": "0.67",
+      "as": "xt"
+    },
+    {
+      "calculate": "'LTV ' + datum.ltvTxt + '  ·  CAC ' + datum.cacTxt",
+      "as": "det"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "canal",
+      "type": "nominal",
+      "sort": {
+        "field": "ratio",
+        "op": "max",
+        "order": "descending"
+      },
+      "axis": {
+        "title": null,
+        "labelFontSize": 12.5,
+        "labelColor": "#FFFFFF",
+        "labelFontWeight": 600,
+        "domain": false,
+        "ticks": false,
+        "labelPadding": 12
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadius": 6,
+        "height": {
+          "band": 0.62
+        },
+        "color": "#1E3462",
+        "opacity": 0.45
+      },
+      "encoding": {
+        "x": {
+          "field": "trilho",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              1
+            ]
+          },
+          "axis": null
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadius": 6,
+        "height": {
+          "band": 0.62
+        },
+        "opacity": 0.92
+      },
+      "encoding": {
+        "x": {
+          "field": "fl",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "cor",
+          "type": "nominal",
+          "scale": null
+        },
+        "tooltip": [
+          {
+            "field": "canal",
+            "title": "Canal"
+          },
+          {
+            "field": "ltvTxt",
+            "title": "LTV estimado"
+          },
+          {
+            "field": "cacTxt",
+            "title": "CAC"
+          },
+          {
+            "field": "rotulo",
+            "title": "LTV:CAC"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadius": 3,
+        "height": {
+          "band": 0.2
+        },
+        "color": "#FFFFFF",
+        "opacity": 0.92
+      },
+      "encoding": {
+        "x": {
+          "field": "fc",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 15,
+        "fontWeight": 700
+      },
+      "encoding": {
+        "x": {
+          "field": "xr",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "rotulo"
+        },
+        "color": {
+          "field": "cor",
+          "type": "nominal",
+          "scale": null
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 11.5,
+        "color": "#A9BBD8"
+      },
+      "encoding": {
+        "x": {
+          "field": "xt",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "det"
+        }
+      }
+    }
+  ]
+}

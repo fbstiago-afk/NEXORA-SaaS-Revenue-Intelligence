@@ -1,0 +1,5 @@
+FaixaHealth,OrdemFaixa,LimiteInferior,CorFaixa
+Saudável,1,75,#00D7C0
+Atenção,2,55,#1678FF
+Risco,3,35,#F5A524
+Crítico,4,0,#FF607A

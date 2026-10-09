@@ -1,0 +1,6 @@
+/// Pasta com os CSVs da base NEXORA. Altere aqui se mover o projeto (termine com \).
+expression PastaDados = "E:\Projetos BI\10 - NEXORA SAAS REVENUE INTELLIGENCE\NEXORA\Data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: d7ed4eff-24bb-5910-a434-70f842834962
+
+	annotation PBI_ResultType = Text
+
