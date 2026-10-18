@@ -1,6 +1,0 @@
-# Power BI — arquivos locais/específicos da máquina
-**/.pbi/localSettings.json
-**/.pbi/cache.abf
-# Python
-__pycache__/
-*.pyc

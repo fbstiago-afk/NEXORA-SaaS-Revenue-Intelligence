@@ -1,5 +1,0 @@
-PlanoID,Plano,OrdemPlano,PrecoBaseMensal,UsuariosInclusos,PrecoUsuarioExtra,Posicionamento,CorPlano
-1,Starter,1,249.00,3,39.00,Entrada / micro e pequenas,#6E86B3
-2,Growth,2,649.00,10,35.00,Intermediário / times em crescimento,#1678FF
-3,Pro,3,1490.00,25,29.00,Avançado / automação e API,#00B8F5
-4,Enterprise,4,4900.00,75,25.00,Corporativo / contratos longos,#6736F5

@@ -1,5 +1,12 @@
 # NEXORA — SaaS Revenue Intelligence
 
+<!-- portfolio-link:start -->
+[![Ver no portfólio](https://img.shields.io/badge/Ver%20o%20painel%20no%20portf%C3%B3lio-Bocardi%20Data-6C3BAA?style=for-the-badge)](https://bocardidata.base44.app/ProjectDetail?id=nexora-saas-revenue-intelligence)
+
+> 🔗 **Quer ver o visual do Power BI?** Acesse a página do projeto no portfólio: **[https://bocardidata.base44.app/ProjectDetail?id=nexora-saas-revenue-intelligence](https://bocardidata.base44.app/ProjectDetail?id=nexora-saas-revenue-intelligence)**
+<!-- portfolio-link:end -->
+
+
 **Connect. Automate. Grow.**
 
 Projeto de portfólio em **Power BI (PBIP / PBIR / TMDL)** para uma empresa SaaS B2B fictícia: Revenue Analytics + Customer Analytics + Product Analytics + Growth Analytics. O dashboard mostra como a NEXORA **adquire → ativa → monetiza → retém → expande → perde → recupera** clientes.
